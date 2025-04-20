@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sugar Beats</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        background-color: #fbd3e9;
+        animation: homebg 15s infinite alternate;
+      }
+
+      nav {
+        position: fixed;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        padding: 20px 5%;
+        width: 90%;
+        z-index: 1000;
+      }
+
+      .logo {
+        height: 40px;
+        width: 55px;
+        background-image: url("imgs/logo.png");
+        background-size: cover;
+      }
+
+      .links {
+        display: flex;
+        gap: 30px;
+      }
+
+      .links a {
+        color: #000;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        animation: link 15s infinite alternate;
+      }
+      @keyframes link {
+        0% {
+          color: #000;
+        }
+        50% {
+          color: #ffffff;
+        }
+        100% {
+          color: #000;
+        }
+      }
+
+      .links a:hover {
+        color: #e91e63;
+      }
+
+      #home {
+        width: 95%;
+        height: 100vh;
+        display: flex;
+        gap: 5%;
+        align-items: center;
+        margin-left: 5%;
+        background-color: #fbd3e9;
+        animation: homebg 15s infinite alternate;
+      }
+
+      .text-content {
+        max-width: 50%;
+      }
+
+      h1 {
+        font-size: 64px;
+        font-weight: 700;
+        margin: 0 0 20px;
+      }
+      h1::before {
+        content: "Strawberry ";
+        animation: h1 15s infinite alternate;
+      }
+      @keyframes h1 {
+        0% {
+          content: "Strawberry ";
+        }
+        50% {
+          content: "Chocolate ";
+        }
+        100% {
+          content: "Caramel ";
+        }
+      }
+      h1 span {
+        color: #e91e63;
+      }
+      h1 span::after {
+        content: "Delight";
+        animation: h1span 15s infinite alternate;
+      }
+      @keyframes h1span {
+        0% {
+          content: "Delight";
+          color: #e91e63;
+        }
+        50% {
+          content: "Indulgence";
+          color: #ff5722;
+        }
+        100% {
+          content: "Bliss";
+          color: #8b4513;
+        }
+      }
+      .text-content p {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #555;
+        margin: 0 0 20px;
+      }
+      .text-content p::after {
+        animation: text 15s infinite alternate;
+        content: "Enjoy this sweet and pretty strawberry cake, covered in soft pink frosting and topped with fresh strawberries Each swirl of cream adds a fun and tasty touch, making it perfect for any special moment or just a treat for yourself";
+      }
+      @keyframes text {
+        0% {
+          color: #555;
+          content: "Enjoy this sweet and pretty strawberry cake, covered in soft pink frosting and topped with fresh strawberries Each swirl of cream adds a fun and tasty touch, making it perfect for any special moment or just a treat for yourself";
+        }
+        50% {
+          content: "Dive into the rich and decadent world of chocolate with our signature cake. Topped with fresh berries and dusted with powdered sugar, it's a treat for all your senses.";
+          color: #fff;
+        }
+        100% {
+          content: "Savor the rich and creamy caramel cake, drizzled with golden caramel and topped with delicate swirls of frosting. Perfect for every celebration or a sweet indulgence.";
+          color: #555;
+        }
+      }
+      .text-content button {
+        background-color: #e91e63;
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 12px 30px;
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        animation: btn 15s infinite alternate;
+      }
+
+      .text-content button:hover {
+        background-color: #d81b60;
+      }
+      @keyframes btn {
+        0% {
+          background-color: #e91e63;
+        }
+        50% {
+          background-color: #6d4c41;
+        }
+        100% {
+          background-color: #d2691e;
+        }
+      }
+
+      .image-content {
+        width: 50%;
+        margin: 5% 5% 0 0;
+      }
+
+      .image-content div {
+        height: 500px;
+        width: 100%;
+        max-width: 500px;
+        border-radius: 20px;
+        justify-self: center;
+      }
+      .image-content div:hover {
+        transform: scale(1.05);
+        transition: transform 0.3s ease;
+      }
+      .image-content div::before {
+        content: " ";
+        display: block;
+        padding-top: 100%;
+        animation: imgcake 15s infinite alternate;
+      }
+      @keyframes imgcake {
+        0% {
+          background-image: url("imgs/cake1.png");
+          background-size: cover;
+        }
+        50% {
+          background-image: url("imgs/cake2.png");
+          background-size: cover;
+        }
+        100% {
+          background-image: url("imgs/cake3.png");
+          background-size: cover;
+        }
+      }
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 16px;
+      }
+      @keyframes homebg {
+        0% {
+          background-color: #fbd3e9;
+        }
+        50% {
+          background-color: #3e2723;
+          color: #fff;
+        }
+        100% {
+          background-color: #f8e8d0;
+        }
+      }
+      @media (max-width: 768px) {
+        #home {
+          padding-top: 22.5vh;
+          height: 120vh;
+          flex-direction: column;
+          align-items: center;
+          max-width: 90%;
+        }
+        .text-content {
+          max-width: 100%;
+          text-align: center;
+        }
+        .image-content {
+          max-width: 100%;
+          margin: 45% 0 0 0;
+        }
+        .image-content div {
+          scale: 1.5;
+        }
+      }
+      .footer {
+        display: flex;
+        flex-direction: column;
+        background-color: #fce4ec;
+        color: #5a3e36;
+        font-family: Arial, sans-serif;
+        padding: 20px 50px;
+      }
+      .footer-logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .footer-logo img {
+        max-width: 100px;
+      }
+      .footer-bottom {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 20px 0;
+        border-top: 2px solid #d81b60;
+      }
+      .footer-bottom div {
+        flex: 1;
+        margin: 10px;
+      }
+      .footer-bottom h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #d81b60;
+      }
+      .footer-bottom p,
+      .footer-bottom a {
+        font-size: 14px;
+        color: #5a3e36;
+        text-decoration: none;
+      }
+      .footer-bottom a:hover {
+        text-decoration: underline;
+        color: #d81b60;
+      }
+      .footer-bottom .social-icons a {
+        margin-right: 10px;
+        font-size: 16px;
+        color: #5a3e36;
+      }
+      .footer-bottom .social-icons a:hover {
+        color: #d81b60;
+      }
+      .footer-big-logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .footer-big-logo img {
+        max-width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo"></div>
+      <div class="links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <section id="home">
+      <div class="text-content">
+        <h1 id="h1strawberry" style="color: black"><span></span></h1>
+        <p></p>
+        <button>Order Now</button>
+      </div>
+      <div class="image-content">
+        <div></div>
+      </div>
+    </section>
+    <section
+      id="about"
+      style="background-color: #fce4ec; padding: 25px 5%; text-align: center"
+    >
+      <div style="max-width: 800px; margin: 0 auto">
+        <h2
+          style="
+            font-size: 48px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 20px;
+          "
+        >
+          About Us
+        </h2>
+        <p
+          style="
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 10px;
+          "
+        >
+          At Sugar Beats, we believe in creating delightful moments with our
+          delicious and beautifully crafted cakes. Using only the finest
+          ingredients, our team of passionate bakers ensures every bite is a
+          celebration of flavor and artistry. Whether it's a birthday,
+          anniversary, or just a sweet craving, we're here to make your day
+          extra special.
+        </p>
+        <img
+          src="imgs/logo.png"
+          alt="About Us"
+          style="
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            margin-top: 20px;
+          "
+        />
+      </div>
+    </section>
+    <section
+      id="products"
+      style="background-color: #fff0f5; padding: 50px 5%; text-align: center"
+    >
+      <h2
+        style="
+          font-size: 48px;
+          font-weight: 700;
+          color: #d81b60;
+          margin-bottom: 40px;
+        "
+      >
+        Our Sweet Treats
+      </h2>
+      <div
+        style="
+          display: flex;
+          justify-content: center;
+          gap: 30px;
+          flex-wrap: wrap;
+        "
+      >
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+          "
+        >
+          <img
+            src="imgs/cake1.png"
+            alt="Strawberry Cake"
+            style="width: 100%; max-width: 150px; margin-bottom: 20px"
+          />
+          <h3 style="font-size: 24px; font-weight: 700; color: #d81b60">
+            $10.00
+          </h3>
+          <p
+            style="
+              font-size: 16px;
+              line-height: 1.6;
+              color: #555;
+              margin-bottom: 20px;
+            "
+          >
+            A delightful strawberry cake with fresh berries.
+          </p>
+          <button
+            style="
+              background-color: #d81b60;
+              color: white;
+              font-size: 16px;
+              font-weight: 600;
+              padding: 10px 20px;
+              border-radius: 25px;
+              border: none;
+              cursor: pointer;
+            "
+          >
+            Order Now
+          </button>
+        </div>
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+          "
+        >
+          <img
+            src="imgs/cake2.png"
+            alt="Chocolate Cake"
+            style="width: 100%; max-width: 150px; margin-bottom: 20px"
+          />
+          <h3 style="font-size: 24px; font-weight: 700; color: #d81b60">
+            $15.00
+          </h3>
+          <p
+            style="
+              font-size: 16px;
+              line-height: 1.6;
+              color: #555;
+              margin-bottom: 20px;
+            "
+          >
+            Indulge in our rich and creamy chocolate cake.
+          </p>
+          <button
+            style="
+              background-color: #d81b60;
+              color: white;
+              font-size: 16px;
+              font-weight: 600;
+              padding: 10px 20px;
+              border-radius: 25px;
+              border: none;
+              cursor: pointer;
+            "
+          >
+            Order Now
+          </button>
+        </div>
+        <div
+          style="
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            text-align: center;
+          "
+        >
+          <img
+            src="imgs/cake3.png"
+            alt="Vanilla Cake"
+            style="width: 100%; max-width: 150px; margin-bottom: 20px"
+          />
+          <h3 style="font-size: 24px; font-weight: 700; color: #d81b60">
+            $18.00
+          </h3>
+          <p
+            style="
+              font-size: 16px;
+              line-height: 1.6;
+              color: #555;
+              margin-bottom: 20px;
+            "
+          >
+            Classic vanilla cake with a creamy frosting.
+          </p>
+          <button
+            style="
+              background-color: #d81b60;
+              color: white;
+              font-size: 16px;
+              font-weight: 600;
+              padding: 10px 20px;
+              border-radius: 25px;
+              border: none;
+              cursor: pointer;
+            "
+          >
+            Order Now
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      id="contact"
+      style="
+        background-color: #fce4ec;
+        padding: 50px 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      "
+    >
+      <div
+        style="
+          background: white;
+          border-radius: 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 40px;
+          max-width: 800px;
+          width: 100%;
+          display: flex;
+          gap: 30px;
+          align-items: center;
+        "
+      >
+        <div style="flex: 1">
+          <img
+            src="imgs/logo.png"
+            alt="Contact Icon"
+            style="width: 100%; max-width: 200px"
+          />
+        </div>
+        <div style="flex: 2">
+          <h2
+            style="
+              font-size: 32px;
+              font-weight: 700;
+              color: #000;
+              margin-bottom: 20px;
+            "
+          >
+            Contact Us
+          </h2>
+          <form>
+            <div style="margin-bottom: 20px">
+              <input type="text" placeholder="Name" />
+            </div>
+            <div style="margin-bottom: 20px">
+              <input type="text" placeholder="Email" />
+            </div>
+            <div style="margin-bottom: 20px">
+              <textarea
+                placeholder="Message"
+                rows="4"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 10px;
+                  font-size: 16px;
+                "
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              style="
+                background-color: #d81b60;
+                color: white;
+                font-size: 16px;
+                font-weight: 600;
+                padding: 10px 20px;
+                border-radius: 25px;
+                border: none;
+                cursor: pointer;
+              "
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer-big-logo">
+        <img src="imgs/logo.png" alt="Cake Shop Big Logo" />
+      </div>
+      <div class="footer-bottom">
+        <div>
+          <h4>Contact Us</h4>
+          <p>Email: herloverahmed0101@hotmail.com</p>
+          <p>Phone: +216 12 123 123</p>
+          <p>Address: Tunsia Ben Arous, fouchena</p>
+          <a href="https://maps.app.goo.gl/14HwpvvcdPdjyPm68">SEE ON MAP →</a>
+        </div>
+        <div>
+          <h4>Stay Connected</h4>
+          <a href="#">SIGN UP FOR OUR OFFERS →</a>
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61556626434166"
+              >Facebook</a
+            >
+            <a href="https://www.instagram.com/her.lover___ahmd">Instagram</a>
+            <a href="https://github.com/herloverAhmd">Github</a>
+            <a href="https://www.pinterest.com/herloverahmd/">Pinterest</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
